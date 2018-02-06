@@ -1,4 +1,4 @@
-IMAGE_NAME = nordea-openjdk-18
+IMAGE_NAME = s2i-openjdk-17
 REPOSITORY = stpork
 
 .PHONY: build
