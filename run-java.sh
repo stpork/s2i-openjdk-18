@@ -35,6 +35,10 @@ get_script_dir() {
 
 # Try hard to find a sane default jar-file
 auto_detect_jar_file() {
+  pwd
+  ls -la /deployments/*
+  ls -la *
+
   local dir=$1
 
   # Filter out temporary jars from the shade plugin which start with 'original-'
@@ -46,8 +50,6 @@ auto_detect_jar_file() {
       ls *.jar | grep -v '^original-'
       exit 0
     fi
-    ls -la /deployments/*
-    ls -la *
 
     echo >&2 "ERROR: Neither \$JAVA_MAIN_CLASS nor \$JAVA_APP_JAR is set and ${nr_jars} JARs found in ${dir} (1 expected)"
     cd ${old_dir}
