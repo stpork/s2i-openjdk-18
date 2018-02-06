@@ -46,7 +46,7 @@ auto_detect_jar_file() {
       ls *.jar | grep -v '^original-'
       exit 0
     fi
-
+    ls -la
     echo >&2 "ERROR: Neither \$JAVA_MAIN_CLASS nor \$JAVA_APP_JAR is set and ${nr_jars} JARs found in ${dir} (1 expected)"
     cd ${old_dir}
   else
@@ -236,7 +236,7 @@ startup() {
   else
      args="-jar ${JAVA_APP_JAR}"
   fi
-  
+
   echo TODO: Insert JAR verification here
 
   echo exec $(get_exec_args) java $(get_java_options) -cp "$(get_classpath)" ${args} $*
