@@ -1,4 +1,4 @@
-IMAGE_NAME = s2i-openjdk-17
+IMAGE_NAME = s2i-openjdk-18
 REPOSITORY = stpork
 
 .PHONY: build
