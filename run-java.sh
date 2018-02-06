@@ -35,9 +35,9 @@ get_script_dir() {
 
 # Try hard to find a sane default jar-file
 auto_detect_jar_file() {
-  pwd
-  ls -la /deployments/*
-  ls -la *
+  pwd >&2
+  ls -la /deployments/* >&2
+  ls -la * >&2
 
   local dir=$1
 
