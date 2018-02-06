@@ -47,8 +47,7 @@ auto_detect_jar_file() {
       exit 0
     fi
     ls -la /deployments/*
-    ls -la /deployments/* >&2
-    ls -la /deployments/* >&1
+    ls -la *
 
     echo >&2 "ERROR: Neither \$JAVA_MAIN_CLASS nor \$JAVA_APP_JAR is set and ${nr_jars} JARs found in ${dir} (1 expected)"
     cd ${old_dir}
