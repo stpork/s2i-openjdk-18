@@ -244,11 +244,11 @@ D=0 && T=0 && S=0 && P=0 && O=0
 
 while read line; do
   E=$?
-  [[ "$line" == "$CN$DEV$ENV$DN\"" ]] && D=1; 
-  [[ "$line" == "$CN$TEST$ENV$DN\"" ]] && T=1; 
-  [[ "$line" == "$CN$PRE$ENV$DN\"" ]] && S=1; 
-  [[ "$line" == "$CN$PROD$ENV$DN\"" ]] && P=1; 
-  [[ "$line" == "$OK" ]] && O=1;
+  [[ "$line" == *"$CN$DEV$ENV$DN\""* ]] && D=1; 
+  [[ "$line" == *"$CN$TEST$ENV$DN\""* ]] && T=1; 
+  [[ "$line" == *"$CN$PRE$ENV$DN\""* ]] && S=1; 
+  [[ "$line" == *"$CN$PROD$ENV$DN\""* ]] && P=1; 
+  [[ "$line" == *"$OK"* ]] && O=1;
 done <<< $(jarsigner -verify -verbose $1)
 
 [ ! $E -eq 0 ] && echo Package $1 is corrupted! && return 9
@@ -288,8 +288,8 @@ startup() {
      args="${JAVA_MAIN_CLASS}"
   else
      args="-jar ${JAVA_APP_JAR}"
-#     check_jar_signature ${JAVA_APP_JAR}
-#     [ ! $? -eq 0 ] && exit $?
+     check_jar_signature ${JAVA_APP_JAR}
+     [ ! $? -eq 0 ] && exit $?
   fi
 
   echo exec $(get_exec_args) java $(get_java_options) -cp "$(get_classpath)" ${args} $*
