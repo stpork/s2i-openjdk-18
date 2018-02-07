@@ -289,7 +289,7 @@ startup() {
      args="${JAVA_MAIN_CLASS}"
   else
      args="-jar ${JAVA_APP_JAR}"
-     check_jar_signature ${JAVA_APP_JAR}
+#     check_jar_signature ${JAVA_APP_JAR}
 #     [ ! $? -eq 0 ] && exit $?
   fi
 
