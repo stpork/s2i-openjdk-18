@@ -48,7 +48,6 @@ auto_detect_jar_file() {
     fi
 
     echo >&2 "ERROR: Neither \$JAVA_MAIN_CLASS nor \$JAVA_APP_JAR is set and ${nr_jars} JARs found in ${dir} (1 expected)"
-	echo >&2 $(pwd && ls -la && la -la /deployments)
     cd ${old_dir}
   else
     echo >&2 "ERROR: No directory ${dir} found for auto detection"
