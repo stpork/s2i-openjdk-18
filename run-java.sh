@@ -259,17 +259,17 @@ if [[ "$DEVOPS_DPENV" == "DEV" && $D != 1 ]]; then
   return 1
 fi;
 
-if [[ "$DEVOPS_DPENV" == "TEST" && ($D != 1 || $T != 1) ]]; then 
+if [[ "$DEVOPS_DPENV" == "TEST" && $T != 1 ]]; then 
   echo Package $1 $INVALID to $TEST$ENV!
   return 2
 fi;
 
-if [[ "$DEVOPS_DPENV" == "PRE"  && ($D != 1 || $T != 1 || $S != 1) ]]; then 
+if [[ "$DEVOPS_DPENV" == "PRE" && $S != 1 ]]; then 
   echo Package $1 $INVALID to $PRE$ENV!
   return 3
 fi;
 
-if [[ "$DEVOPS_DPENV" == "PROD" && ($D != 1 || $T != 1 || $S != 1 || $P != 1) ]]; then 
+if [[ "$DEVOPS_DPENV" == "PROD" && $P != 1 ]]; then 
   echo Package $1 $INVALID to $PROD$ENV!
   return 4
 fi;
