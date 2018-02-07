@@ -230,7 +230,7 @@ DEV=Development
 TEST=Testing
 PRE=Staging
 PROD=Production
-CN='- Signed by "CN='
+CN="- Signed by \"CN="
 DN=$DEVOPS_DNAME
 ENV=' Environment'
 OK='jar verified.'
