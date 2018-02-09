@@ -229,7 +229,7 @@ DEV=Development
 TEST=Testing
 PRE=Staging
 PROD=Production
-CN="- Signed by \"CN="
+CN="X.509, CN="
 DN=$DEVOPS_DNAME
 ENV=' Environment'
 OK='jar verified.'
@@ -244,10 +244,10 @@ D=0 && T=0 && S=0 && P=0 && O=0
 
 while read line; do
   E=$?
-  [[ "$line" == *"$CN$DEV$ENV$DN\""* ]] && D=1; 
-  [[ "$line" == *"$CN$TEST$ENV$DN\""* ]] && T=1; 
-  [[ "$line" == *"$CN$PRE$ENV$DN\""* ]] && S=1; 
-  [[ "$line" == *"$CN$PROD$ENV$DN\""* ]] && P=1; 
+  [[ "$line" == *"$CN$DEV$ENV$DN"* ]] && D=1; 
+  [[ "$line" == *"$CN$TEST$ENV$DN"* ]] && T=1; 
+  [[ "$line" == *"$CN$PRE$ENV$DN"* ]] && S=1; 
+  [[ "$line" == *"$CN$PROD$ENV$DN"* ]] && P=1; 
   [[ "$line" == *"$OK"* ]] && O=1;
 done <<< $(jarsigner -verify -verbose $1)
 
