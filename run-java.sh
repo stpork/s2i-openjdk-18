@@ -249,7 +249,7 @@ while read line; do
   [[ "$line" == *"$CN$PRE$ENV$DN"* ]] && S=1; 
   [[ "$line" == *"$CN$PROD$ENV$DN"* ]] && P=1; 
   [[ "$line" == *"$OK"* ]] && O=1;
-done <<< $(jarsigner -verify -verbose $1)
+done <<< $(jarsigner -verify -verbose -certs $1)
 
 [ ! $E -eq 0 ] && echo Package $1 is corrupted! && return 9
 [ ! $O -eq 1 ] && echo Package $1 is unsigned! && return 5
